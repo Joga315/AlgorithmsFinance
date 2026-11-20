@@ -1,0 +1,10 @@
+{
+  "initial": {
+    "rows": 18,
+    "points": 18,
+    "curves": 6
+  },
+  "filter_combinations_checked": 36,
+  "javascript_errors": [],
+  "screenshot": "results/dashboard-check.png"
+}

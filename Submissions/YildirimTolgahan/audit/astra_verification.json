@@ -1,0 +1,62 @@
+{
+  "audit_python": "3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]",
+  "source_hashes_match": true,
+  "timing_records": 1350,
+  "allocation_records": 90,
+  "dashboard_rebuild_byte_identical": false,
+  "dashboard_rebuild_identical_after_newline_normalization": true,
+  "provided_tests_pass": true,
+  "history_results": {
+    "244c6f0": {
+      "exit_code": 1,
+      "expected_outcome_confirmed": true
+    },
+    "c1d45f3": {
+      "exit_code": 0,
+      "expected_outcome_confirmed": true
+    },
+    "a82224a": {
+      "exit_code": 0,
+      "expected_outcome_confirmed": true
+    }
+  },
+  "bundle_commits": [
+    "b464591 Record reproducible phase-one results, offline dashboard and audit instructions",
+    "a82224a Revise binary search and add independent time and allocation measurements",
+    "c1d45f3 Implement and validate the three original search methods",
+    "244c6f0 Specify membership contract and seeded workloads before implementation"
+  ],
+  "claimed_workload_medians": {
+    "linear/original": {
+      "prepare_us": 0.02913889863923944,
+      "batch_us": 45777.43699974235,
+      "total_us": 45515.36200006012
+    },
+    "linear/revised": {
+      "prepare_us": 0.02927906988498987,
+      "batch_us": 46447.244999853865,
+      "total_us": 45734.30200025541
+    },
+    "binary/original": {
+      "prepare_us": 11175.524999998743,
+      "batch_us": 117.06259089227056,
+      "total_us": 11254.893000113952
+    },
+    "binary/revised": {
+      "prepare_us": 11132.760000236885,
+      "batch_us": 99.43447999830823,
+      "total_us": 11163.466000198241
+    },
+    "hash/original": {
+      "prepare_us": 2094.342999953369,
+      "batch_us": 1.2275160081970038,
+      "total_us": 2090.2169999317266
+    },
+    "hash/revised": {
+      "prepare_us": 2098.418999594287,
+      "batch_us": 1.1922580076358156,
+      "total_us": 2088.5950002593745
+    }
+  },
+  "limits": "Saved Astra timings are arithmetically verified, not rerun on its Linux host. No universal or statistically established speedup is inferred from five repeats."
+}

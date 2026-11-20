@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "created_utc": "2026-11-20T14:24:10.434305+00:00",
+  "python": "3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]",
+  "implementation": "CPython",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "machine": "AMD64",
+  "processor": "Intel64 Family 6 Model 140 Stepping 1, GenuineIntel",
+  "logical_cpus": 8,
+  "git_commit": "e57b1c258534783795a814189e6f844d0daecfc9",
+  "git_status_at_measurement": "?? ./",
+  "source_sha256": {
+    "algorithms.py": "7eab7acffa4f338d8a9ce2e07a8f915defbddaca397e922a621160c41ac71c58",
+    "data.py": "4dbd74975c75b3bf25ca2e3ea89bd81b163652fe51973553991bf4d40f0d2876",
+    "benchmark.py": "4fe7d74f23f679dcc156eea82fc2ef824373ccf2e1167d6c643574416b22cb3c",
+    "test_lab.py": "11b2266c70580f7a72f85c093dfc04a6df00171f1aba5c489031603cb3c91d74",
+    "dashboard.py": "97cc771a0262e42be8810217238f2dbab082446dbd90e05cf15adf1c23a73560",
+    "dashboard_template.html": "38e3604ca6fa8b52d2116b06329b6ab6324e39bab5561228c4d4a348fb974245"
+  },
+  "settings": {
+    "sizes": [
+      1000,
+      10000,
+      100000
+    ],
+    "query_counts": [
+      1,
+      100
+    ],
+    "hit_rates": [
+      0.0,
+      0.5,
+      1.0
+    ],
+    "duplicate_policies": [
+      "unique",
+      "duplicates"
+    ],
+    "repeats": 5,
+    "base_seed": 2026,
+    "actual_workload_count": 30,
+    "exact_hit_rates_only": true
+  },
+  "units": {
+    "time": "milliseconds per complete invocation (one query batch)",
+    "memory": "bytes"
+  },
+  "protocol": "timeit/perf_counter: one calibration/warm-up per phase/method/round, followed by grouped calls targeting 3 ms (maximum 20000 calls); at least five rounds; independently shuffled method order per round. Preparation and total rebuild state every call. Query phase reuses one index for that round. Preparation, batch and total are independent measurements and need not add up. Python call and temporary-result cleanup overhead included; cyclic GC disabled by timeit. Generation, validation, tracing and rendering excluded. All timing rounds for a workload finish before memory runs.",
+  "memory_protocol": "Separate fresh tracemalloc run for each method/version/workload. Input and queries allocated before tracing; prepared structures and returned output retained at reading. Reports current and peak traced Python bytes, not process RSS or mathematical auxiliary space. No native-memory completeness claim."
+}

@@ -1,0 +1,57 @@
+test_slide_example (test_search.MembershipTests.test_slide_example) ...
+  test_slide_example (test_search.MembershipTests.test_slide_example) (method='linear', version='original', ids=[7, 11, 7], queries=[11, 9, 7]) ... FAIL
+  test_slide_example (test_search.MembershipTests.test_slide_example) (method='binary', version='original', ids=[7, 11, 7], queries=[11, 9, 7]) ... FAIL
+  test_slide_example (test_search.MembershipTests.test_slide_example) (method='hash', version='original', ids=[7, 11, 7], queries=[11, 9, 7]) ... FAIL
+
+======================================================================
+FAIL: test_slide_example (test_search.MembershipTests.test_slide_example) (method='linear', version='original', ids=[7, 11, 7], queries=[11, 9, 7])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Tolgahan\AlgorithmsFinance\Submissions\YildirimTolgahan\audit\.work\244c6f0\test_search.py", line 16, in check_case
+    self.assertEqual(result, expected)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [False, False, False] != [True, False, True]
+
+First differing element 0:
+False
+True
+
+- [False, False, False]
++ [True, False, True]
+
+======================================================================
+FAIL: test_slide_example (test_search.MembershipTests.test_slide_example) (method='binary', version='original', ids=[7, 11, 7], queries=[11, 9, 7])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Tolgahan\AlgorithmsFinance\Submissions\YildirimTolgahan\audit\.work\244c6f0\test_search.py", line 16, in check_case
+    self.assertEqual(result, expected)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [False, False, False] != [True, False, True]
+
+First differing element 0:
+False
+True
+
+- [False, False, False]
++ [True, False, True]
+
+======================================================================
+FAIL: test_slide_example (test_search.MembershipTests.test_slide_example) (method='hash', version='original', ids=[7, 11, 7], queries=[11, 9, 7])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Tolgahan\AlgorithmsFinance\Submissions\YildirimTolgahan\audit\.work\244c6f0\test_search.py", line 16, in check_case
+    self.assertEqual(result, expected)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [False, False, False] != [True, False, True]
+
+First differing element 0:
+False
+True
+
+- [False, False, False]
++ [True, False, True]
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (failures=3)

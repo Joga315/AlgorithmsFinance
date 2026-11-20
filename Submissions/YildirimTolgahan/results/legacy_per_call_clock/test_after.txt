@@ -1,0 +1,22 @@
+Command: python -B -m unittest discover -v
+Python: 3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]
+
+Dashboard: C:\Users\Tolgahan\AlgorithmsFinance\Submissions\YildirimTolgahan\tmp7ti_r3dd\dashboard.html
+test_invalid_settings (test_lab.GeneratorTests.test_invalid_settings) ... ok
+test_reproducible (test_lab.GeneratorTests.test_reproducible) ... ok
+test_sizes_hit_rates_and_policies (test_lab.GeneratorTests.test_sizes_hit_rates_and_policies) ... ok
+test_dashboard_embeds_saved_data_without_executing_benchmarks (test_lab.MeasurementTests.test_dashboard_embeds_saved_data_without_executing_benchmarks) ... ok
+test_raw_repeats_and_memory_contract (test_lab.MeasurementTests.test_raw_repeats_and_memory_contract) ... ok
+test_too_few_repeats_rejected (test_lab.MeasurementTests.test_too_few_repeats_rejected) ... ok
+test_empty_array_and_queries (test_lab.SearchContractTests.test_empty_array_and_queries) ... ok
+test_generated_inputs_against_independent_oracle (test_lab.SearchContractTests.test_generated_inputs_against_independent_oracle) ... ok
+test_large_signed_integers (test_lab.SearchContractTests.test_large_signed_integers) ... ok
+test_one_entry (test_lab.SearchContractTests.test_one_entry) ... ok
+test_search_primitives (test_lab.SearchContractTests.test_search_primitives) ... ok
+test_slide_example_and_order (test_lab.SearchContractTests.test_slide_example_and_order) ... ok
+test_unsorted_input_duplicates_and_boundaries (test_lab.SearchContractTests.test_unsorted_input_duplicates_and_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.271s
+
+OK

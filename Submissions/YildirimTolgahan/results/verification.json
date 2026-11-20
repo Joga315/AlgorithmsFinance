@@ -1,0 +1,8 @@
+{
+  "summary_rows": 180,
+  "raw_repeat_rows": 900,
+  "independent_phase_samples": 2700,
+  "coverage_csv_medians_order_and_hashes": "PASS",
+  "dashboard_byte_identical_rebuild": true,
+  "reuse_scenarios_verified": true
+}

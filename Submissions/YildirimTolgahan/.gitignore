@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+results/browser-profile/
+results/dashboard-check.png
+audit/.work/

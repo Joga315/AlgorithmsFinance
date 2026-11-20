@@ -1,0 +1,29 @@
+Dashboard: C:\Users\Tolgahan\AlgorithmsFinance\Submissions\YildirimTolgahan\tmp73gfqguf\dashboard.html
+Dashboard: C:\Users\Tolgahan\AlgorithmsFinance\Submissions\YildirimTolgahan\tmp73gfqguf\dashboard.html
+Dashboard: C:\Users\Tolgahan\AlgorithmsFinance\Submissions\YildirimTolgahan\tmp73gfqguf\dashboard.html
+test_invalid_settings (test_lab.GeneratorTests.test_invalid_settings) ... ok
+test_reproducible (test_lab.GeneratorTests.test_reproducible) ... ok
+test_sizes_hit_rates_and_policies (test_lab.GeneratorTests.test_sizes_hit_rates_and_policies) ... ok
+test_dashboard_embeds_saved_data_without_executing_benchmarks (test_lab.MeasurementTests.test_dashboard_embeds_saved_data_without_executing_benchmarks) ... ok
+test_interleaved_rounds (test_lab.MeasurementTests.test_interleaved_rounds) ... ok
+test_only_feasible_workload_hit_rates (test_lab.MeasurementTests.test_only_feasible_workload_hit_rates) ... ok
+test_raw_repeats_and_memory_contract (test_lab.MeasurementTests.test_raw_repeats_and_memory_contract) ... ok
+test_too_few_repeats_rejected (test_lab.MeasurementTests.test_too_few_repeats_rejected) ... ok
+test_colliding_and_large_integer_ids (test_lab.ReusableIndexTests.test_colliding_and_large_integer_ids) ... ok
+test_empty_input_queries_and_fresh_results (test_lab.ReusableIndexTests.test_empty_input_queries_and_fresh_results) ... ok
+test_exhaustive_index_reuse (test_lab.ReusableIndexTests.test_exhaustive_index_reuse) ... ok
+test_multiple_batches_and_original_input_mutation (test_lab.ReusableIndexTests.test_multiple_batches_and_original_input_mutation) ... ok
+test_empty_array_and_queries (test_lab.SearchContractTests.test_empty_array_and_queries) ... ok
+test_exhaustive_small_arrays (test_lab.SearchContractTests.test_exhaustive_small_arrays) ... ok
+test_generated_inputs_against_independent_oracle (test_lab.SearchContractTests.test_generated_inputs_against_independent_oracle) ... ok
+test_large_signed_integers (test_lab.SearchContractTests.test_large_signed_integers) ... ok
+test_one_entry (test_lab.SearchContractTests.test_one_entry) ... ok
+test_reusing_prepared_structures (test_lab.SearchContractTests.test_reusing_prepared_structures) ... ok
+test_search_primitives (test_lab.SearchContractTests.test_search_primitives) ... ok
+test_slide_example_and_order (test_lab.SearchContractTests.test_slide_example_and_order) ... ok
+test_unsorted_input_duplicates_and_boundaries (test_lab.SearchContractTests.test_unsorted_input_duplicates_and_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.766s
+
+OK

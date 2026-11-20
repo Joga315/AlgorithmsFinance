@@ -1,0 +1,4 @@
+# Preserve exact source/evidence bytes and their recorded SHA-256 hashes.
+# This setting is local to this submission; other course folders are unaffected.
+# Treat preserved CRLF as line endings while still checking trailing spaces.
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

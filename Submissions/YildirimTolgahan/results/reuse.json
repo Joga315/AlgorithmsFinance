@@ -1,0 +1,92 @@
+{
+  "metadata": {
+    "created_utc": "2026-11-20T15:00:54.513972+00:00",
+    "python": "3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "n": 100000,
+    "q": 100,
+    "batch_count": 5,
+    "repeats": 5,
+    "seed": 721,
+    "actual_hit_rate": 0.5,
+    "protocol": "Same fixed IDs and ordered batches; grouped timeit; median of five or more shuffled rounds. Both scenarios include all lookups and index construction: once overall versus once per batch. Data generation and validation excluded. Milliseconds per complete multi-batch execution.",
+    "source_sha256": {
+      "algorithms.py": "d583a6b71367d19e8fde299162cb61e193baab4fcbbada70c1f9cdf056b5915a",
+      "data.py": "4dbd74975c75b3bf25ca2e3ea89bd81b163652fe51973553991bf4d40f0d2876",
+      "benchmark.py": "4fe7d74f23f679dcc156eea82fc2ef824373ccf2e1167d6c643574416b22cb3c",
+      "benchmark_reuse.py": "5fb6c4f5c2d9ebc778135394f228fdbae15b88252947e052b197d4cbacd1ca61"
+    }
+  },
+  "scenarios": {
+    "rebuild_each_batch": {
+      "median_ms": 124.09839999600081,
+      "raw_repeats": [
+        {
+          "repeat": 1,
+          "position": 2,
+          "ms": 209.8684000011417,
+          "calls": 1
+        },
+        {
+          "repeat": 2,
+          "position": 1,
+          "ms": 123.8625999976648,
+          "calls": 1
+        },
+        {
+          "repeat": 3,
+          "position": 2,
+          "ms": 110.00700000295183,
+          "calls": 1
+        },
+        {
+          "repeat": 4,
+          "position": 1,
+          "ms": 142.76329999847803,
+          "calls": 1
+        },
+        {
+          "repeat": 5,
+          "position": 1,
+          "ms": 124.09839999600081,
+          "calls": 1
+        }
+      ]
+    },
+    "build_once": {
+      "median_ms": 26.058600000396837,
+      "raw_repeats": [
+        {
+          "repeat": 1,
+          "position": 1,
+          "ms": 36.588399998436216,
+          "calls": 1
+        },
+        {
+          "repeat": 2,
+          "position": 2,
+          "ms": 24.54280000529252,
+          "calls": 1
+        },
+        {
+          "repeat": 3,
+          "position": 1,
+          "ms": 26.058600000396837,
+          "calls": 1
+        },
+        {
+          "repeat": 4,
+          "position": 2,
+          "ms": 26.531399998930283,
+          "calls": 1
+        },
+        {
+          "repeat": 5,
+          "position": 2,
+          "ms": 25.509700004477054,
+          "calls": 1
+        }
+      ]
+    }
+  }
+}

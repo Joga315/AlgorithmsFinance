@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Membership search | Runtime dashboard</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f6f2;color:#192e2b;font:16px/1.5 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 20px}h1{font:clamp(32px,5vw,54px)/1.1 Georgia,serif;margin:8px 0}h2{font:26px Georgia,serif}nav,section,details{margin-top:18px;background:white;border:1px solid #d4ddd8;border-radius:10px;padding:16px}nav,.legend{display:flex;gap:16px;flex-wrap:wrap}select{display:block;background:white;color:inherit;border:1px solid #99aba3;padding:6px;font:inherit}svg{width:100%;height:auto;display:block}svg text{font:14px system-ui;fill:#334e46}.legend span{border-left:5px solid;padding-left:7px}.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}td,th{text-align:right;padding:5px 8px;border-bottom:1px solid #dde5df}th:first-child,td:first-child{text-align:left}a{color:#145f57}pre{white-space:pre-wrap;overflow-wrap:anywhere}summary{cursor:pointer}
+</style>
+<main><h1>Membership search</h1><p>Compare preparation, lookup and end-to-end cost on the same integer IDs.</p>
+<nav><label>Queries per batch<select id="q"><option>1</option><option selected>100</option></select></label>
+<label>Hit rate<select id="rate"></select></label><label>Measurement<select id="phase"><option value="total">End to end</option><option value="prepare">Preparation</option><option value="batch">Query batch</option></select></label>
+<label>Implementation<select id="version"><option value="both">Both versions</option><option>original</option><option>revised</option></select></label></nav>
+<section><h2>Median elapsed time</h2><div id="legend" class="legend"></div><p>Solid lines show original implementations. Dashed lines show revisions. Both axes use logarithmic scales.</p>
+<svg id="plot" viewBox="0 0 680 290" role="img" aria-label="Median microseconds against array length. Exact values in the following table."></svg>
+<div class="scroll"><table><thead><tr><th>Method / version<th>IDs<th>Time (µs)<th>Current (KiB)<th>Peak (KiB)</tr></thead><tbody id="rows"></tbody></table></div><p>Memory covers preparation and the complete batch with output retained. One KiB is 1,024 bytes.</p></section>
+<details><summary>Raw repeats and environment</summary><p><a href="results/timings.csv">Timing CSV</a> · <a href="results/memory.csv">Memory CSV</a> · <a href="results/environment.json">Environment JSON</a></p><pre id="env"></pre></details></main>
+<script type="application/json" id="data">__MEASUREMENTS__</script>
+<script>
+const get = id => document.getElementById(id);
+const {points, memory, environment} = JSON.parse(get("data").textContent);
+const colors = {linear:"#007b69",binary:"#a84c1a",hash:"#4d58a0"};
+get("env").textContent = JSON.stringify(environment,null,2);
+get("legend").innerHTML = Object.entries(colors).map(([k,c])=>`<span style="border-color:${c}">${k}</span>`).join("");
+function changeBatch() {
+  const rates = get("q").value === "1" ? [0,100] : [0,50,100];
+  const previous = get("rate").value;
+  get("rate").replaceChildren(...rates.map(r=>new Option(r+"%",r)));
+  get("rate").value = previous && rates.includes(+previous) ? previous : rates.includes(50) ? 50 : 0;
+  draw();
+}
+function draw() {
+  const q=+get("q").value, hits=q*(+get("rate").value)/100;
+  const series=points.filter(p=>p.q===q && p.hits===hits && p.phase===get("phase").value &&
+    (get("version").value==="both" || p.version===get("version").value));
+  const low=Math.floor(Math.log10(Math.min(...series.map(p=>p.us))));
+  const high=Math.max(low+1,Math.ceil(Math.log10(Math.max(...series.map(p=>p.us)))));
+  const x=n=>100+(Math.log10(n)-3)*260, y=us=>222-192*(Math.log10(us)-low)/(high-low);
+  const parts=['<text x="18" y="17">µs</text>'];
+  for(let tick=low;tick<=high;tick++){
+    const value=10**tick, level=y(value);
+    parts.push(`<path d="M80 ${level} H630" stroke="#dce6e0"/><text x="70" y="${level+4}" text-anchor="end">${value}</text>`);
+  }
+  for(const n of [1000,10000,100000]) parts.push(`<text x="${x(n)}" y="248" text-anchor="middle">${n.toLocaleString("en-US")}</text>`);
+  parts.push('<text x="360" y="277" text-anchor="middle">Array length (IDs)</text>');
+  for(const [method,color] of Object.entries(colors)){
+    for(const version of ["original","revised"]){
+      const line=series.filter(p=>p.method===method && p.version===version).sort((a,b)=>a.n-b.n);
+      if(!line.length) continue;
+      parts.push(`<polyline points="${line.map(p=>x(p.n)+","+y(p.us)).join(" ")}" fill="none" stroke="${color}" stroke-width="2.5" stroke-dasharray="${version==="original"?"none":"7 4"}"/>`);
+      for(const p of line) parts.push(`<circle cx="${x(p.n)}" cy="${y(p.us)}" r="3.5" stroke="${color}" fill="${version==="original"?color:"white"}"><title>${method} · ${version} · ${p.us.toPrecision(4)} µs</title></circle>`);
+    }
+  }
+  get("plot").innerHTML=parts.join("");
+  get("rows").innerHTML=series.sort((a,b)=>a.method.localeCompare(b.method)||a.version.localeCompare(b.version)||a.n-b.n).map(p=>{
+    const m=memory.find(m=>+m.q===q && +m.hits===hits && +m.n===p.n && m.method===p.method && m.version===p.version);
+    return `<tr><td>${p.method} / ${p.version}<td>${p.n}<td>${p.us.toPrecision(4)}<td>${(+m.current_bytes/1024).toFixed(2)}<td>${(+m.peak_bytes/1024).toFixed(2)}</tr>`;
+  }).join("");
+}
+get("q").onchange=changeBatch;
+for(const id of ["rate","phase","version"]) get(id).onchange=draw;
+changeBatch();
+</script></html>
