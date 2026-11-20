@@ -1,0 +1,22 @@
+Dashboard verification
+
+Environment: existing .venv; Python 3.14.7; Streamlit 1.67.0.
+Dependency command: python -m pip install -r requirements.txt
+Result: all pinned requirements already satisfied.
+
+Correctness command: python -m pytest -q
+Result: 78 passed in 0.20s.
+
+Streamlit AppTest:
+- Initial render completed without exceptions and produced four labeled
+  timing charts.
+- Changing filters to q=1, requested hit rate 50%, revised version, and
+  binary search rerendered without exceptions. The warning reported the
+  saved achieved rate of 100% and clarified that this is not mixed.
+- Checked 72 displayed median values across the four metrics against raw
+  repeat medians and seconds-to-milliseconds conversion. The source JSON
+  remained unchanged.
+- Confirmed the download source is the original results JSON bytes.
+- Static source check found no benchmark-runner import or process invocation.
+
+No browser-based check was performed.

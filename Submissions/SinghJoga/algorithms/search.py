@@ -17,27 +17,29 @@ def linear_search(ids: list[int], queries: list[int]) -> list[bool]:
 def binary_search(ids: list[int], queries: list[int]) -> list[bool]:
     """Return one actual bool per ordered integer query for an integer ID list.
 
-    Preserve query order and leave both input lists unchanged. Search a
-    sorted copy of ``ids``.
+    Preserve query order and leave both input lists unchanged. Iteratively
+    search a sorted copy of ``ids``.
     """
     sorted_ids = sorted(ids)
+    results = []
+    for query in queries:
+        left = 0
+        right = len(sorted_ids) - 1
+        found = False
 
-    def contains(query: int, low: int, high: int) -> bool:
-        if low > high:
-            return False
+        while left <= right:
+            middle = (left + right) // 2
+            middle_value = sorted_ids[middle]
+            if middle_value == query:
+                found = True
+                break
+            if query < middle_value:
+                right = middle - 1
+            else:
+                left = middle + 1
 
-        middle = (low + high) // 2
-        middle_value = sorted_ids[middle]
-        if middle_value == query:
-            return True
-        if query < middle_value:
-            return contains(query, low, middle - 1)
-        return contains(query, middle + 1, high)
-
-    return [
-        contains(query, 0, len(sorted_ids) - 1)
-        for query in queries
-    ]
+        results.append(found)
+    return results
 
 
 def hash_membership(ids: list[int], queries: list[int]) -> list[bool]:

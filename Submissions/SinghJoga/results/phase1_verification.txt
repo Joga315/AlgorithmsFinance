@@ -1,0 +1,33 @@
+Phase 1 verification
+
+Source and measurement review:
+- All four saved benchmark SHA-256 values match the current search.py,
+  search_v1.py, generator, and benchmark runner.
+- The saved benchmark records HEAD
+  a80e2d2409903378e6a10ae82efa8f51819897ea and
+  dirty_working_tree=true. This historical status was preserved.
+- The full matrix was not rerun because its source hashes match.
+
+Existing environment:
+- `python -m pip install -r requirements.txt`: all pinned packages satisfied.
+- `python -m pytest -q`: 78 passed in 0.15s.
+- Benchmark CLI `--help` succeeded.
+
+Fresh temporary candidate copy:
+- Created a Python 3.14.7 virtual environment and installed requirements.txt
+  successfully.
+- `python -m pytest -q`: 78 passed in 0.26s.
+- Repeated the documented generator command with the same seed; JSON output
+  was identical.
+- Generator checks passed for empty IDs/queries, empty IDs with absent
+  queries, and the impossible-hit ValueError.
+- `python -m benchmarks.run_benchmarks --smoke`: saved 1 workload, 6 timing
+  records, and 6 memory records in the temporary copy only.
+- AppTest rendered four charts and changed filters without exceptions; the
+  q=1, requested-50% warning showed the achieved 100% rate.
+- The documented Streamlit launch served the app and health endpoint with
+  HTTP 200 on port 8501. A direct curl check confirmed both endpoints.
+- The temporary checkout, environment, and smoke output were removed.
+
+No full benchmark matrix was rerun. No browser-based visual check was
+performed. No unresolved verification issue remains.

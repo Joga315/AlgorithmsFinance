@@ -1,12 +1,24 @@
 import pytest
 
-from algorithms.search import binary_search, hash_membership, linear_search
+from algorithms.search import (
+    binary_search as current_binary_search,
+    hash_membership as current_hash_membership,
+    linear_search as current_linear_search,
+)
+from algorithms.search_v1 import (
+    binary_search as v1_binary_search,
+    hash_membership as v1_hash_membership,
+    linear_search as v1_linear_search,
+)
 
 
 SEARCH_FUNCTIONS = [
-    pytest.param(linear_search, id="linear_search"),
-    pytest.param(binary_search, id="binary_search"),
-    pytest.param(hash_membership, id="hash_membership"),
+    pytest.param(v1_linear_search, id="v1-linear_search"),
+    pytest.param(v1_binary_search, id="v1-recursive-binary_search"),
+    pytest.param(v1_hash_membership, id="v1-hash_membership"),
+    pytest.param(current_linear_search, id="search-linear_search"),
+    pytest.param(current_binary_search, id="search-iterative-binary_search"),
+    pytest.param(current_hash_membership, id="search-hash_membership"),
 ]
 
 

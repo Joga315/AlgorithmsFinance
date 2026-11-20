@@ -1,0 +1,462 @@
+{
+  "metadata": {
+    "schema_version": 1,
+    "run_mode": "smoke",
+    "started_at_utc": "2026-11-20T14:59:27.004642+00:00",
+    "python_version": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 142 Stepping 12, GenuineIntel",
+    "git": {
+      "head": "a80e2d2409903378e6a10ae82efa8f51819897ea",
+      "dirty_working_tree": true,
+      "status_porcelain": [
+        " M Submissions/SinghJoga/README.md",
+        " M Submissions/SinghJoga/algorithms/search.py",
+        " M Submissions/SinghJoga/docs/walkthrough.md",
+        " M Submissions/SinghJoga/tests/test_search.py",
+        "?? Submissions/SinghJoga/benchmarks/run_benchmarks.py",
+        "?? Submissions/SinghJoga/results/benchmark_results.json",
+        "?? Submissions/SinghJoga/results/benchmark_smoke.json",
+        "?? Submissions/SinghJoga/results/tests_after_revision.txt"
+      ]
+    },
+    "sha256": {
+      "algorithms/search.py": "ede2b8d579fac7b62114a6c1adbe0604547ae1690e33ac62ede38df903250daa",
+      "algorithms/search_v1.py": "1fa15bc4afd4851c634b0206e1f29af1bf31105ca2488f581b1c94294acba5d0",
+      "data/generate.py": "6236324af4e0406a5a5b7cb9338296aa1c7c36a6507512e8dc4a48eaf9fa2f23",
+      "benchmarks/run_benchmarks.py": "30d7788917688e2913a0b4643b29b3bf9de9ce6298281f3a9bb6a897ccd6c704"
+    },
+    "generator_version": "1.0.0",
+    "matrix": {
+      "n_values": [
+        64
+      ],
+      "q_values": [
+        8
+      ],
+      "requested_hit_rates": [
+        0.5
+      ],
+      "seed_base": 20261120,
+      "seed_policy": "Full matrix seeds are SEED_BASE plus the zero-based workload index in n, q, hit-rate loop order; each actual seed is saved in its workload record.",
+      "smoke_seed": 20261119,
+      "versions_and_methods": [
+        {
+          "version": "search_v1",
+          "method": "linear_search"
+        },
+        {
+          "version": "search_v1",
+          "method": "binary_search"
+        },
+        {
+          "version": "search_v1",
+          "method": "hash_membership"
+        },
+        {
+          "version": "search",
+          "method": "linear_search"
+        },
+        {
+          "version": "search",
+          "method": "binary_search"
+        },
+        {
+          "version": "search",
+          "method": "hash_membership"
+        }
+      ]
+    },
+    "timing": {
+      "clock": "time.perf_counter",
+      "unit": "seconds",
+      "warmup_calls_per_operation": 1,
+      "measured_repeats": 5,
+      "calibration_target_seconds": 0.005,
+      "maximum_batch_calls": 2048,
+      "calibration_policy": "For preparation, one complete query-batch adapter call, and a direct public call, start with one call and double the batch until it takes at least the target duration or reaches the call cap. The last return value remains alive until the timer stops; batch outputs are not accumulated. Calibration and warm-up are excluded from retained repeats.",
+      "preparation_definition": "Adapter preparation is timed separately. Binary search constructs sorted(ids); hash membership constructs set(ids). Linear preparation returns the original IDs reference and performs no data copy. Each measured preparation call creates fresh state where applicable and discards it.",
+      "query_definition": "Adapter query time is per complete ordered query batch of q queries, includes returned-list allocation, and is not per query. Query-only adapter calls reuse a prepared state built outside that component timer.",
+      "component_total_definition": "For each repeat, add that repeat's preparation seconds per call and query seconds per complete batch; report the median of those five sums.",
+      "public_end_to_end_definition": "Separately time the actual public method, including its own preparation, complete query batch, and output allocation. This is direct public-call timing, not the adapter-component sum.",
+      "adapter_note": "Component timings measure benchmark adapters, not direct public method calls. Outside timing, each adapter's correctness-check output is compared with both its public method and generator-provided expected answers.",
+      "excluded_from_timing": [
+        "input generation",
+        "correctness checks",
+        "warm-up and calibration",
+        "printing",
+        "file output",
+        "memory tracing"
+      ]
+    },
+    "memory": {
+      "tool": "tracemalloc",
+      "unit": "bytes",
+      "separate_fresh_trace_per_method_version_workload": true,
+      "public_method_includes_preparation": true,
+      "input_allocations": "excluded; inputs are generated before tracing",
+      "included_allocations": "preparation and returned output",
+      "current_bytes_definition": "Read while the returned output remains alive; temporary preparation structures may already have been freed.",
+      "peak_bytes_definition": "Peak traced Python allocation during the public method call, including temporary preparation structures.",
+      "limitation": "tracemalloc measures traced Python allocations, not total process memory or theoretical auxiliary space."
+    },
+    "workload_count": 1,
+    "timing_record_count": 6,
+    "memory_record_count": 6
+  },
+  "workloads": [
+    {
+      "workload_id": "n64_q8_hit0.5_seed20261119",
+      "n": 64,
+      "q": 8,
+      "seed": 20261119,
+      "requested_hit_rate": 0.5,
+      "actual_hit_count": 4,
+      "actual_hit_rate": 0.5,
+      "genuinely_mixed": true,
+      "hit_rate_note": null,
+      "duplicate_policy": "IDs are sampled with replacement from the inclusive range [0, 10*n]; duplicates are allowed.",
+      "id_range": {
+        "min": 0,
+        "max": 640
+      },
+      "absent_query_policy": "Absent queries are negative integers sampled with replacement from [-q, -1]; they cannot match non-negative IDs. No absent queries are generated when q=0.",
+      "generator_version": "1.0.0"
+    }
+  ],
+  "timing_results": [
+    {
+      "version": "search_v1",
+      "method": "linear_search",
+      "batch_counts": {
+        "preparation_calls": 2048,
+        "query_batch_calls": 512,
+        "public_end_to_end_calls": 512
+      },
+      "calibration_target_reached": {
+        "preparation": false,
+        "query_batch": true,
+        "public_end_to_end": true
+      },
+      "preparation_seconds_per_call_repeats": [
+        1.0361327440477908e-07,
+        1.9692384967129328e-07,
+        1.012206780615088e-07,
+        9.311520443588961e-08,
+        9.370120324092568e-08
+      ],
+      "query_seconds_per_complete_batch_repeats": [
+        9.748632692208048e-06,
+        1.0509374988032505e-05,
+        9.341796840089955e-06,
+        8.931640650189365e-06,
+        1.1040820254493156e-05
+      ],
+      "component_total_seconds_per_repeat": [
+        9.852245966612827e-06,
+        1.0706298837703798e-05,
+        9.443017518151464e-06,
+        9.024755854625255e-06,
+        1.1134521457734081e-05
+      ],
+      "public_end_to_end_seconds_per_call_repeats": [
+        1.0825976687556249e-05,
+        9.649609410189441e-06,
+        1.0064648449770175e-05,
+        9.041210887517082e-06,
+        8.924609346649959e-06
+      ],
+      "preparation_median_seconds_per_call": 1.012206780615088e-07,
+      "query_median_seconds_per_complete_batch": 9.748632692208048e-06,
+      "component_total_median_seconds": 9.852245966612827e-06,
+      "public_end_to_end_median_seconds_per_call": 9.649609410189441e-06,
+      "workload_id": "n64_q8_hit0.5_seed20261119"
+    },
+    {
+      "version": "search_v1",
+      "method": "binary_search",
+      "batch_counts": {
+        "preparation_calls": 2048,
+        "query_batch_calls": 1024,
+        "public_end_to_end_calls": 1024
+      },
+      "calibration_target_reached": {
+        "preparation": false,
+        "query_batch": true,
+        "public_end_to_end": true
+      },
+      "preparation_seconds_per_call_repeats": [
+        1.7549804738337116e-06,
+        1.6863281757650839e-06,
+        1.8981933180839405e-06,
+        2.166210947507352e-06,
+        1.963720706044114e-06
+      ],
+      "query_seconds_per_complete_batch_repeats": [
+        6.090624992793892e-06,
+        5.83925782393635e-06,
+        7.959082040542853e-06,
+        7.260742222570116e-06,
+        7.53359381633345e-06
+      ],
+      "component_total_seconds_per_repeat": [
+        7.845605466627603e-06,
+        7.525585999701434e-06,
+        9.857275358626794e-06,
+        9.426953170077468e-06,
+        9.497314522377565e-06
+      ],
+      "public_end_to_end_seconds_per_call_repeats": [
+        1.0293359423485526e-05,
+        1.2802148489754472e-05,
+        1.169033203041181e-05,
+        1.1681640671667992e-05,
+        1.0770507856250333e-05
+      ],
+      "preparation_median_seconds_per_call": 1.8981933180839405e-06,
+      "query_median_seconds_per_complete_batch": 7.260742222570116e-06,
+      "component_total_median_seconds": 9.426953170077468e-06,
+      "public_end_to_end_median_seconds_per_call": 1.1681640671667992e-05,
+      "workload_id": "n64_q8_hit0.5_seed20261119"
+    },
+    {
+      "version": "search_v1",
+      "method": "hash_membership",
+      "batch_counts": {
+        "preparation_calls": 2048,
+        "query_batch_calls": 2048,
+        "public_end_to_end_calls": 2048
+      },
+      "calibration_target_reached": {
+        "preparation": false,
+        "query_batch": false,
+        "public_end_to_end": false
+      },
+      "preparation_seconds_per_call_repeats": [
+        1.365966795674467e-06,
+        1.525585958006559e-06,
+        1.4694335845888418e-06,
+        1.399755888087384e-06,
+        1.353857442154549e-06
+      ],
+      "query_seconds_per_complete_batch_repeats": [
+        5.435546768239874e-07,
+        5.796874802399543e-07,
+        5.782714538327127e-07,
+        5.309570383360551e-07,
+        4.965332323081384e-07
+      ],
+      "component_total_seconds_per_repeat": [
+        1.9095214724984544e-06,
+        2.1052734382465133e-06,
+        2.0477050384215545e-06,
+        1.930712926423439e-06,
+        1.8503906744626875e-06
+      ],
+      "public_end_to_end_seconds_per_call_repeats": [
+        1.8956542930936848e-06,
+        2.0709472892121994e-06,
+        1.8713867007136287e-06,
+        1.9016601413568424e-06,
+        1.7466308577240852e-06
+      ],
+      "preparation_median_seconds_per_call": 1.399755888087384e-06,
+      "query_median_seconds_per_complete_batch": 5.435546768239874e-07,
+      "component_total_median_seconds": 1.930712926423439e-06,
+      "public_end_to_end_median_seconds_per_call": 1.8956542930936848e-06,
+      "workload_id": "n64_q8_hit0.5_seed20261119"
+    },
+    {
+      "version": "search",
+      "method": "linear_search",
+      "batch_counts": {
+        "preparation_calls": 2048,
+        "query_batch_calls": 1024,
+        "public_end_to_end_calls": 1024
+      },
+      "calibration_target_reached": {
+        "preparation": false,
+        "query_batch": true,
+        "public_end_to_end": true
+      },
+      "preparation_seconds_per_call_repeats": [
+        9.008789447761956e-08,
+        9.04296939552296e-08,
+        9.624022823118139e-08,
+        1.1391597354304395e-07,
+        1.3173826118872967e-07
+      ],
+      "query_seconds_per_complete_batch_repeats": [
+        8.953027304414718e-06,
+        9.15195312245487e-06,
+        9.472168017055083e-06,
+        1.1258886729592632e-05,
+        1.032558589031396e-05
+      ],
+      "component_total_seconds_per_repeat": [
+        9.043115198892338e-06,
+        9.2423828164101e-06,
+        9.568408245286264e-06,
+        1.1372802703135676e-05,
+        1.045732415150269e-05
+      ],
+      "public_end_to_end_seconds_per_call_repeats": [
+        1.0833105420715583e-05,
+        9.039355518325465e-06,
+        9.474902412875963e-06,
+        1.0768554716378276e-05,
+        1.0681152389224735e-05
+      ],
+      "preparation_median_seconds_per_call": 9.624022823118139e-08,
+      "query_median_seconds_per_complete_batch": 9.472168017055083e-06,
+      "component_total_median_seconds": 9.568408245286264e-06,
+      "public_end_to_end_median_seconds_per_call": 1.0681152389224735e-05,
+      "workload_id": "n64_q8_hit0.5_seed20261119"
+    },
+    {
+      "version": "search",
+      "method": "binary_search",
+      "batch_counts": {
+        "preparation_calls": 2048,
+        "query_batch_calls": 1024,
+        "public_end_to_end_calls": 1024
+      },
+      "calibration_target_reached": {
+        "preparation": false,
+        "query_batch": true,
+        "public_end_to_end": true
+      },
+      "preparation_seconds_per_call_repeats": [
+        1.778613295755349e-06,
+        1.6924316241784254e-06,
+        1.7153808471448428e-06,
+        1.6835449514474021e-06,
+        1.6774413893472229e-06
+      ],
+      "query_seconds_per_complete_batch_repeats": [
+        5.186328166928433e-06,
+        4.96640632263734e-06,
+        4.83935548345471e-06,
+        4.870117209065938e-06,
+        4.70419922748988e-06
+      ],
+      "component_total_seconds_per_repeat": [
+        6.9649414626837824e-06,
+        6.6588379468157655e-06,
+        6.554736330599553e-06,
+        6.5536621605133405e-06,
+        6.381640616837103e-06
+      ],
+      "public_end_to_end_seconds_per_call_repeats": [
+        6.574902386091708e-06,
+        6.571777248609578e-06,
+        6.822949217166752e-06,
+        6.64814456285967e-06,
+        6.540234380736365e-06
+      ],
+      "preparation_median_seconds_per_call": 1.6924316241784254e-06,
+      "query_median_seconds_per_complete_batch": 4.870117209065938e-06,
+      "component_total_median_seconds": 6.554736330599553e-06,
+      "public_end_to_end_median_seconds_per_call": 6.574902386091708e-06,
+      "workload_id": "n64_q8_hit0.5_seed20261119"
+    },
+    {
+      "version": "search",
+      "method": "hash_membership",
+      "batch_counts": {
+        "preparation_calls": 2048,
+        "query_batch_calls": 2048,
+        "public_end_to_end_calls": 2048
+      },
+      "calibration_target_reached": {
+        "preparation": false,
+        "query_batch": false,
+        "public_end_to_end": false
+      },
+      "preparation_seconds_per_call_repeats": [
+        1.300976578022528e-06,
+        1.341503946150624e-06,
+        1.3849120819031668e-06,
+        1.3228515740593139e-06,
+        1.571728546423401e-06
+      ],
+      "query_seconds_per_complete_batch_repeats": [
+        4.951172059008968e-07,
+        5.195801122681587e-07,
+        4.862793048232561e-07,
+        5.312011808200623e-07,
+        4.938476081406407e-07
+      ],
+      "component_total_seconds_per_repeat": [
+        1.7960937839234248e-06,
+        1.8610840584187827e-06,
+        1.871191386726423e-06,
+        1.8540527548793762e-06,
+        2.0655761545640416e-06
+      ],
+      "public_end_to_end_seconds_per_call_repeats": [
+        1.7257812032767106e-06,
+        1.918212888085691e-06,
+        1.65903315973992e-06,
+        1.825195340643404e-06,
+        1.7616210925552878e-06
+      ],
+      "preparation_median_seconds_per_call": 1.341503946150624e-06,
+      "query_median_seconds_per_complete_batch": 4.951172059008968e-07,
+      "component_total_median_seconds": 1.8610840584187827e-06,
+      "public_end_to_end_median_seconds_per_call": 1.7616210925552878e-06,
+      "workload_id": "n64_q8_hit0.5_seed20261119"
+    }
+  ],
+  "memory_results": [
+    {
+      "workload_id": "n64_q8_hit0.5_seed20261119",
+      "version": "search_v1",
+      "method": "linear_search",
+      "output_length": 8,
+      "current_traced_bytes": 216,
+      "peak_traced_bytes": 216
+    },
+    {
+      "workload_id": "n64_q8_hit0.5_seed20261119",
+      "version": "search_v1",
+      "method": "binary_search",
+      "output_length": 8,
+      "current_traced_bytes": 1373,
+      "peak_traced_bytes": 1373
+    },
+    {
+      "workload_id": "n64_q8_hit0.5_seed20261119",
+      "version": "search_v1",
+      "method": "hash_membership",
+      "output_length": 8,
+      "current_traced_bytes": 168,
+      "peak_traced_bytes": 2824
+    },
+    {
+      "workload_id": "n64_q8_hit0.5_seed20261119",
+      "version": "search",
+      "method": "linear_search",
+      "output_length": 8,
+      "current_traced_bytes": 216,
+      "peak_traced_bytes": 216
+    },
+    {
+      "workload_id": "n64_q8_hit0.5_seed20261119",
+      "version": "search",
+      "method": "binary_search",
+      "output_length": 8,
+      "current_traced_bytes": 296,
+      "peak_traced_bytes": 808
+    },
+    {
+      "workload_id": "n64_q8_hit0.5_seed20261119",
+      "version": "search",
+      "method": "hash_membership",
+      "output_length": 8,
+      "current_traced_bytes": 168,
+      "peak_traced_bytes": 2824
+    }
+  ]
+}
